@@ -1,6 +1,7 @@
+/* jshint unused:false */
 'use strict';
 
-angular.module('contatoApp', [])
+var contatoApp = angular.module('contatoApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -1,36 +1,35 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
+<div class="app">
+  <h1>People</h1>
+
+  <form class="add-new" ng-submit="addContact()">
+    <label for="name">Name <input type="text" ng-model="newContact.name"></label>
+    <label for="name">Phone Number <input type="text" ng-model="newContact.phone"></label>
+    <label for="name">Addres <input type="text" ng-model="newContact.address"></label>
+    <button type="submit">+</button>
+  </form>
+
+  <input type="search" class="search" ng-model="searchTerm">
+
+  <ul class="list">
+    <li ng-repeat="contact in contacts | filter:searchTerm track by $index">
+      <strong class="fn">{{ contact.name }}</strong>
+      <span class="phone">{{ contact.phone }}</span>
+      <address>{{ contact.address }}</address>
+      <button class="btn edit-btn" ng-click="editContact(contact)">Edit</button>
+      <button class="btn remove-btn" ng-click="removeContact(contact)">Remove</button>
+    </li>
   </ul>
-  <h3 class="text-muted">contato</h3>
+
+  <form class="edit" ng-submit="doneEditing()" escape="cancelEditing()">
+    <h2>Edit contact</h2>
+    <label for="name">Name <input type="text" requred ng-model="editingContact.name"></label>
+    <label for="name">Phone Number <input type="text" requred ng-model="editingContact.phone"></label>
+    <label for="name">Addres <input type="text" requred ng-model="editingContact.address"></label>
+    <button class="btn" type="submit" ng-click="cancelEditing()">Cancel</button>
+    <button class="btn" type="submit">Done</button>
+  </form>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
+<footer class="footer">
   <p>♥ from the Yeoman team</p>
-</div>
+</footer>
