@@ -42,9 +42,9 @@ contatoApp.controller('MainCtrl', function ($scope, Storage) {
 
   $scope.beginAdding = function() {
     $scope.addingNew = true;
-  }
+  };
 
   $scope.cancelAdding = function() {
     $scope.addingNew = false;
-  }
+  };
 });
