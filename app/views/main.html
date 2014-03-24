@@ -1,35 +1,61 @@
-<div class="app">
-  <h1>People</h1>
+  <header class="header">
+    <h1>People</h1>
+  </header>
 
-  <form class="add-new" ng-submit="addContact()">
-    <label for="name">Name <input type="text" ng-model="newContact.name"></label>
-    <label for="name">Phone Number <input type="text" ng-model="newContact.phone"></label>
-    <label for="name">Addres <input type="text" ng-model="newContact.address"></label>
-    <button type="submit">+</button>
-  </form>
 
-  <input type="search" class="search" ng-model="searchTerm">
+  <div class="search">
+    <input type="search" placeholder="Search contacts" ng-model="searchTerm">
+    <button class="btn pull-right bordered" ng-click="beginAdding()">+ Add</button>
+  </div>
 
   <ul class="list">
-    <li ng-repeat="contact in contacts | filter:searchTerm track by $index">
-      <strong class="fn">{{ contact.name }}</strong>
-      <span class="phone">{{ contact.phone }}</span>
-      <address>{{ contact.address }}</address>
-      <button class="btn edit-btn" ng-click="editContact(contact)">Edit</button>
-      <button class="btn remove-btn" ng-click="removeContact(contact)">Remove</button>
+    <li class="padded" ng-show="!contacts.length">
+      <p>Your contact list is empty. <a ng-click="beginAdding()">Add one</a></p>
     </li>
+
+    <li class="item" ng-repeat="contact in contacts | filter:searchTerm track by $index">
+      <div class="column profile">
+        <strong class="fn">{{ contact.name }}</strong>
+        <span class="phone">{{ contact.phone }}</span>
+        <address ng-show="contact.address">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
+            <path d="M4 12 A12 12 0 0 1 28 12 C28 20, 16 32, 16 32 C16 32, 4 20 4 12 M11 12 A5 5 0 0 0 21 12 A5 5 0 0 0 11 12 Z"/>
+          </svg>
+          {{ contact.address }}
+        </address>
+      </div>
+      <menu class="column align-right">
+        <button class="btn btn-primary" ng-click="editContact(contact)">Edit</button>
+        <button class="btn remove-btn" ng-click="removeContact(contact)">
+          <svg xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 32 32" width="32" height="32">
+            <path d="M4 4 L10 4 L12 2 L20 2 L22 4 L28 4 L29 8 L3 8 z M5 10 L27 10 L26 30 L6 30 z"/>
+          </svg>
+        </button>
+      </menu>
+    </li>
+
   </ul>
 
-  <form class="edit" ng-submit="doneEditing()" escape="cancelEditing()">
-    <h2>Edit contact</h2>
-    <label for="name">Name <input type="text" requred ng-model="editingContact.name"></label>
-    <label for="name">Phone Number <input type="text" requred ng-model="editingContact.phone"></label>
-    <label for="name">Addres <input type="text" requred ng-model="editingContact.address"></label>
-    <button class="btn" type="submit" ng-click="cancelEditing()">Cancel</button>
-    <button class="btn" type="submit">Done</button>
-  </form>
-</div>
 
-<footer class="footer">
-  <p>♥ from the Yeoman team</p>
-</footer>
+
+  <form class="add-new modal" ng-submit="addContact()" ng-show="addingNew" escape="cancelAdding()">
+    <h2>New contact</h2>
+    <label for="name"><input type="text" ng-model="newContact.name" placeholder="Name"></label>
+    <label for="name"><input type="text" ng-model="newContact.phone" placeholder="Phone number"></label>
+    <label for="name"><input type="text" ng-model="newContact.address" placeholder="Address"></label>
+    <p class="align-right">
+      <button type="submit" class="btn btn-primary">+ Add</button>
+      <button class="btn bordered" ng-click="cancelAdding()">Cancel</button>
+    </p>
+  </form>
+  
+  <form class="edit modal" ng-submit="doneEditing()" escape="cancelEditing()" ng-show="editingContact">
+    <h2>Edit contact</h2>
+    <label for="name"><input type="text" requred ng-model="editingContact.name" placeholder="Name"></label>
+    <label for="name"><input type="text" requred ng-model="editingContact.phone" placeholder="Phone number"></label>
+    <label for="name"><input type="text" requred ng-model="editingContact.address" placeholder="Address"></label>
+    <p class="align-right">
+      <button class="btn btn-primary" type="submit">Done</button>
+      <button class="btn bordered" ng-click="cancelEditing()">Cancel</button>
+    </p>
+  </form>

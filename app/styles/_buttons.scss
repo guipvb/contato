@@ -1,0 +1,33 @@
+input, button {
+    outline: none;
+}
+
+.btn {
+    @include border-radius($default-radius);
+    background-color: $gray;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $font-size;
+    padding: 4px 8px;
+
+    svg {
+        fill: white;
+        width: $font-size;
+        height: $font-size;
+    }
+
+    &.btn-primary {
+        background-color: $red;
+        color: white;
+        svg {
+            fill: $dark-gray;
+        }
+    }
+
+    &.bordered {
+        background: none;
+        border: 1px solid $gray;
+    }
+}

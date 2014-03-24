@@ -1,0 +1,43 @@
+// List
+.list {
+    background-color: white;
+    padding: 0;
+    @include no-bullet();
+    
+    .item { 
+        border-bottom: 1px solid $gray;
+        color: $dark-gray;
+        font-weight: 100;
+        @include clearfix(); 
+        padding: $default-padding;
+    }
+    .item:last-child { border: none }
+
+    .column { float: left; width: 20%; }
+    .user-icon { width: 10%; }
+    .profile { width: 80%; }
+    menu { width: 20%; }
+
+    .fn {
+        color: $red;
+        float: left;
+        font-size: 18px;
+        width: 50%;
+    }
+    .phone {
+        float: left;
+        width: 50%;
+        font-weight: normal;
+    }
+    address {
+        clear: both;
+        font-size: 12px;
+        float: left;
+        margin-left: 50%;
+
+        svg {
+            fill: $gray;
+            vertical-align: bottom;
+        }
+    }
+}

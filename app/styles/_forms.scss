@@ -1,0 +1,20 @@
+label {
+  display: block;
+
+  strong {
+    float: left;
+    width: 30%;
+    text-align: right;
+  }
+
+  input {
+    @include box-sizing(border-box);
+    @include border-radius($default-radius);
+    border: 0;
+    float: left;
+    height: 32px;
+    margin-bottom: 5px;
+    padding: 0 8px;
+    width: 100%;
+  }
+}

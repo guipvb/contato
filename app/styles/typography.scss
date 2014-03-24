@@ -1,0 +1,20 @@
+body {
+  font: 100 $font-size Helvetica, sans-serif;
+  color: $gray;
+}
+
+a {
+  text-decoration: underline;
+  color: $red;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: .5em;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: .5em;
+}

@@ -13,6 +13,7 @@ contatoApp.controller('MainCtrl', function ($scope, Storage) {
     contacts.push(contact);
     Storage.put(contacts);
     $scope.newContact = { name: '', address: '', phone: '' };
+    $scope.addingNew = false;
   };
 
   $scope.editContact = function(contact) {
@@ -38,4 +39,12 @@ contatoApp.controller('MainCtrl', function ($scope, Storage) {
     $scope.contacts.splice(contacts.indexOf(contact), 1);
     Storage.put(contacts);
   };
+
+  $scope.beginAdding = function() {
+    $scope.addingNew = true;
+  }
+
+  $scope.cancelAdding = function() {
+    $scope.addingNew = false;
+  }
 });
