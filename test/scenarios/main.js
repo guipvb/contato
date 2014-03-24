@@ -50,7 +50,6 @@ describe('contact list', function() {
       item.findElement(by.css('.remove-btn')).click();
 
       element.all(by.css('.item')).then(function(items) {
-        console.log(items);
         expect(items.length).toBe(2);
       });
     });
