@@ -6,7 +6,6 @@ contatoApp.directive('escape', function () {
     link: function (scope, element, attrs) {
       element.bind('keydown', function(event) {
         if (event.keyCode === 27) {
-          console.log(attrs);
           scope.$apply(attrs.escape);
         }
       });

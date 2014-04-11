@@ -26,10 +26,10 @@ exports.config = {
   // find chromedriver. This will be passed to the selenium jar as
   // the system property webdriver.chrome.driver. If null, selenium will
   // attempt to find chromedriver using PATH.
-  chromeDriver: null,
+  chromeDriver: './node_modules/chromedriver/lib/chromedriver/chromedriver',
   // If true, only chromedriver will be started, not a standalone selenium.
   // Tests for browsers other than chrome will not run.
-  chromeOnly: false,
+  chromeOnly: true,
   // Additional command line options to pass to selenium. For example,
   // if you need to change the browser timeout, use
   // seleniumArgs: ['-browserTimeout=60'],
@@ -81,7 +81,7 @@ exports.config = {
   baseUrl: 'http://localhost:9000',
 
   // Selector for the element housing the angular app - this defaults to
-  // body, but is necessary if ng-app is on a descendant of <body>  
+  // body, but is necessary if ng-app is on a descendant of <body>
   rootElement: 'body',
 
   // A callback function called once protractor is ready and available, and
@@ -113,7 +113,7 @@ exports.config = {
   // Mocha has limited beta support. You will need to include your own
   // assertion framework if working with mocha.
   framework: 'jasmine',
-  
+
   // ----- Options to be passed to minijasminenode -----
   //
   // See the full list at https://github.com/juliemr/minijasminenode
